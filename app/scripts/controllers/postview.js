@@ -23,7 +23,7 @@ app.controller('PostViewCtrl', function ($scope, $routeParams, Post, Auth) {
 	};
 
 	$scope.deleteComment = function (comment) {
-		$scope.comments.$remove(comment);
+	  $scope.comments.$remove(comment);
 	};
 
 });
