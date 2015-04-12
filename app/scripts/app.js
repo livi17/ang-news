@@ -10,31 +10,40 @@
  *
  * Main module of the application.
  */
-var app = angular
-  .module('angNewsApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch',
-    'firebase'
+ var app = angular
+ .module('angNewsApp', [
+  'ngAnimate',
+  'ngCookies',
+  'ngResource',
+  'ngRoute',
+  'ngSanitize',
+  'ngTouch',
+  'firebase'
   ]).constant('FIREBASE_URL', 'https://retrospect.firebaseio.com/')
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/posts.html',
-        controller: 'PostsCtrl'
-      })
-      .when('/posts/:postId', {
-        templateUrl: 'views/showpost.html',
-        controller: 'postViewCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+ .config(function ($routeProvider) {
+  $routeProvider
+  .when('/', {
+    templateUrl: 'views/posts.html',
+    controller: 'PostsCtrl'
+  })
+  .when('/posts/:postId', {
+    templateUrl: 'views/showpost.html',
+    controller: 'postViewCtrl'
+  })
+  .when('/about', {
+    templateUrl: 'views/about.html',
+    controller: 'AboutCtrl'
+  })
+  .when('/register', {
+    templateUrl: 'views/register.html',
+    controller: 'AuthCtrl',
+    resolve: {
+      user: function(Auth) {
+        return Auth.resolveUser();
+      }
+    }
+  })
+  .otherwise({
+    redirectTo: '/'
   });
+});
