@@ -28,7 +28,7 @@
   })
   .when('/posts/:postId', {
     templateUrl: 'views/showpost.html',
-    controller: 'postViewCtrl'
+    controller: 'PostViewCtrl'
   })
   .when('/about', {
     templateUrl: 'views/about.html',
